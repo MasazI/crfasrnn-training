@@ -81,6 +81,7 @@ python filter_images.py converted_labels/ train.txt
 
 ```
 
+
 ## LMDBの作成
 
 オリジナルのcrf-rnnは500x500pxの画像を学習に使っていたしここでもそうする。しかし、これといった事情がなければ、  
@@ -98,7 +99,8 @@ python data2lmdb.py converted_labels
 
 4つのlmdbができる。train、testとそれぞれのオリジナル画像とセグメンテーション画像である。
 
-・学習
+
+## 学習
 学習済みモデルをファインチューニングする。
 オリジナルのCaffeが同居している場合に対応するため、以下の環境変数を設定すること。
 
@@ -118,4 +120,3 @@ CRF_AS_RNN_PATH=path/to/オリジナルのCRFasRNN実装
 
 solve.py
 ```
-
