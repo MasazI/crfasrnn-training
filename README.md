@@ -2,6 +2,17 @@
 
 crfasrnnで学習するためのサポートツールです。
 
+## 依存関係(dependencies)
+
+- CRFasRNN https://github.com/torrvision/crfasrnn
+- 学習済みモデル
+```
+#!bash
+wget -O TVG_CRFRNN_COCO_VOC.caffemodel http://goo.gl/j7PrPZ
+
+```
+
+
 ## 教師データ
 - PASCAL VOC 2012形式 (02.05.2016現在)
 
