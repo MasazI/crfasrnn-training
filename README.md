@@ -51,7 +51,7 @@ segmentationのpngファイルから必要なクラスの画像だけリスト�
 ```
 #!bash
 
-find labels/ -printf ‘%f¥n’ | sed ’s/¥.png//‘ | tail -n +2 > train.txt
+create_train_txt.sh  <labels image directory path>
 
 ```
 
@@ -67,11 +67,12 @@ PASCAL VOC 2012 形式のデータセットだと、真の領域はRGB画像で�
 ```
 #!bash
 
-python convert_labels.py labels/ train.txt converted_labels
+convert_labels.sh <labels image directory path> <labels image list path> <output converted image directory path>
+
 ```
 
 
-convert_labels.pyでは、RGB情報をグレースケールに変換する処理を行う。  
+convert_labels.shでは、RGB情報をグレースケールに変換する処理を行う。  
 
 変換規則はutil.pyで定義され、convert_from_color_segmentation関数で実行できる  
 util自体が設定ファイルとgetterを兼ねている。  
@@ -88,7 +89,7 @@ util自体が設定ファイルとgetterを兼ねている。
 ```
 #!bash
 
-python filter_images.py converted_labels/ train.txt
+filter_images.sh <labels image directory path> <labels image list path>
 
 ```
 
@@ -129,5 +130,5 @@ CRF_AS_RNN_PATH=path/to/オリジナルのCRFasRNN実装
 ```
 #!bash
 
-solve.py
+python solve.py
 ```
