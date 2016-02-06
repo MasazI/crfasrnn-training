@@ -7,7 +7,7 @@ crfasrnnで学習するためのサポートツールです。
 - CRFasRNN https://github.com/torrvision/crfasrnn
 - 学習済みモデル
 ```
-#!bash
+
 wget https://s3-ap-northeast-1.amazonaws.com/recognizetrainimages/TVG_CRFRNN_COCO_VOC.caffemodel
 
 ```
@@ -32,7 +32,6 @@ wget https://s3-ap-northeast-1.amazonaws.com/recognizetrainimages/TVG_CRFRNN_COC
 
 
 ```
-#!bash
 
 ln -s ${DATASETS}/VOCdevkit/VOC2012/SegmentationClass labels
 ln -s ${DATASETS}/VOCdevkit/VOC2012/JPEGImages images
@@ -49,7 +48,6 @@ segmentationのpngファイルから必要なクラスの画像だけリスト�
 
 
 ```
-#!bash
 
 create_train_txt.sh  <labels image directory path>
 
@@ -65,7 +63,6 @@ PASCAL VOC 2012 形式のデータセットだと、真の領域はRGB画像で�
 
 
 ```
-#!bash
 
 convert_labels.sh <labels image directory path> <labels image list path> <output converted image directory path>
 
@@ -87,7 +84,6 @@ util自体が設定ファイルとgetterを兼ねている。
 
 
 ```
-#!bash
 
 filter_images.sh <labels image directory path> <labels image list path>
 
@@ -103,7 +99,6 @@ filter_images.sh <labels image directory path> <labels image list path>
 
 
 ```
-#!bash
 
 python data2lmdb.py converted_labels
 
@@ -118,7 +113,6 @@ python data2lmdb.py converted_labels
 
 
 ```
-#!bash
 
 CRF_AS_RNN_PATH=path/to/オリジナルのCRFasRNN実装
 
@@ -128,7 +122,7 @@ CRF_AS_RNN_PATH=path/to/オリジナルのCRFasRNN実装
 
 
 ```
-#!bash
 
 python solve.py
+
 ```
