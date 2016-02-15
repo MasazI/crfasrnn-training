@@ -76,7 +76,7 @@ class CRFasRNN:
         im = image[:,:,::-1]
         im = im - reshaped_mean_vec
 
-        cur_h, cur_w, cur_c = im.shae
+        cur_h, cur_w, cur_c = im.shape
 
         if cur_h >= 500 or cur_w >= 500:
             return
@@ -86,7 +86,7 @@ class CRFasRNN:
 
         im = np.pad(im, pad_width=((0, pad_h), (0, pad_w), (0, 0)), mode='constant', constant_values=0)
 
-        segmentation = net.predict([im])
+        segmentation = self.net.predict([im])
         segmentation2 = segmentation[0:cur_h, 0:cur_w]
 
         output_im = PILImage.fromarray(segmentation2)
@@ -96,8 +96,8 @@ class CRFasRNN:
         plt.savefig('output.png')
 
 if __name__ == '__main__':
-        crf_as_rnn = CRFasRNN('', '')
-        
+        crf_as_rnn = CRFasRNN('TVG_CRFRNN_COCO_VOC.prototxt', 'models/train_iter_29000.caffemodel')
+        crf_as_rnn.predict('test_images/car.jpg')
 
 
 
