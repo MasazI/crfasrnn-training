@@ -7,7 +7,7 @@ crfasrnnで学習するためのサポートツールです。
 - CRFasRNN https://github.com/torrvision/crfasrnn
 - 学習済みモデル
 ```
-#!bash
+
 wget https://s3-ap-northeast-1.amazonaws.com/recognizetrainimages/TVG_CRFRNN_COCO_VOC.caffemodel
 
 ```
@@ -17,6 +17,12 @@ wget https://s3-ap-northeast-1.amazonaws.com/recognizetrainimages/TVG_CRFRNN_COC
 - PASCAL VOC 2012形式 (02.05.2016現在)
 
 ### PASCAL VOC 2012形式
+
+```
+wget http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar
+tar -xvf VOCtrainval_11-May-2012.tar
+```
+
 - VOCdevkit/VOC2012/SegmentationClass:
 
 セグメンテーションされたpng画像が格納されている。例えば人はピンクに領域が塗られているような感じ。
@@ -32,7 +38,6 @@ wget https://s3-ap-northeast-1.amazonaws.com/recognizetrainimages/TVG_CRFRNN_COC
 
 
 ```
-#!bash
 
 ln -s ${DATASETS}/VOCdevkit/VOC2012/SegmentationClass labels
 ln -s ${DATASETS}/VOCdevkit/VOC2012/JPEGImages images
@@ -49,9 +54,8 @@ segmentationのpngファイルから必要なクラスの画像だけリスト�
 
 
 ```
-#!bash
 
-find labels/ -printf ‘%f¥n’ | sed ’s/¥.png//‘ | tail -n +2 > train.txt
+create_train_txt.sh  <labels image directory path>
 
 ```
 
@@ -65,13 +69,13 @@ PASCAL VOC 2012 形式のデータセットだと、真の領域はRGB画像で�
 
 
 ```
-#!bash
 
-python convert_labels.py labels/ train.txt converted_labels
+convert_labels.sh <labels image directory path> <labels image list path> <output converted image directory path>
+
 ```
 
 
-convert_labels.pyでは、RGB情報をグレースケールに変換する処理を行う。  
+convert_labels.shでは、RGB情報をグレースケールに変換する処理を行う。  
 
 変換規則はutil.pyで定義され、convert_from_color_segmentation関数で実行できる  
 util自体が設定ファイルとgetterを兼ねている。  
@@ -86,9 +90,8 @@ util自体が設定ファイルとgetterを兼ねている。
 
 
 ```
-#!bash
 
-python filter_images.py converted_labels/ train.txt
+filter_images.sh <labels image directory path> <labels image list path>
 
 ```
 
@@ -102,7 +105,6 @@ python filter_images.py converted_labels/ train.txt
 
 
 ```
-#!bash
 
 python data2lmdb.py converted_labels
 
@@ -117,7 +119,6 @@ python data2lmdb.py converted_labels
 
 
 ```
-#!bash
 
 CRF_AS_RNN_PATH=path/to/オリジナルのCRFasRNN実装
 
@@ -127,7 +128,7 @@ CRF_AS_RNN_PATH=path/to/オリジナルのCRFasRNN実装
 
 
 ```
-#!bash
 
-solve.py
+python solve.py
+
 ```
