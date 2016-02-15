@@ -17,6 +17,12 @@ wget https://s3-ap-northeast-1.amazonaws.com/recognizetrainimages/TVG_CRFRNN_COC
 - PASCAL VOC 2012形式 (02.05.2016現在)
 
 ### PASCAL VOC 2012形式
+
+```
+wget http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar
+tar -xvf VOCtrainval_11-May-2012.tar
+```
+
 - VOCdevkit/VOC2012/SegmentationClass:
 
 セグメンテーションされたpng画像が格納されている。例えば人はピンクに領域が塗られているような感じ。
