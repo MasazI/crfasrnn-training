@@ -8,7 +8,7 @@ crfasrnnで学習するためのサポートツールです。
 - 学習済みモデル
 ```
 #!bash
-wget -O TVG_CRFRNN_COCO_VOC.caffemodel http://goo.gl/j7PrPZ
+wget https://s3-ap-northeast-1.amazonaws.com/recognizetrainimages/TVG_CRFRNN_COCO_VOC.caffemodel
 
 ```
 
