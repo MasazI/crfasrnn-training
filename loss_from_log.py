@@ -62,12 +62,12 @@ def main():
   plt.savefig('loss.png')
 
   # accuracy
-  plt.clf()
-  plt.plot(test_iteration, test_accuracy, 'k', label='Test accuracy')
-  plt.legend()
-  plt.ylabel('Accuracy')
-  plt.xlabel('Number of iterations')
-  plt.savefig('accuracy.png')
+  #plt.clf()
+  #plt.plot(test_iteration, test_accuracy, 'k', label='Test accuracy')
+  #plt.legend()
+  #plt.ylabel('Accuracy')
+  #plt.xlabel('Number of iterations')
+  #plt.savefig('accuracy.png')
 
 def match_iteration(line):
   return re.search(r'Iteration (.*),', line)
