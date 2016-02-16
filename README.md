@@ -129,6 +129,13 @@ CRF_AS_RNN_PATH=path/to/オリジナルのCRFasRNN実装
 
 ```
 
-python solve.py
+./train.sh
 
+```
+
+日付情報を付加したログファイルが作成されるので、以下のスクリプトで教師データおよびテストデータのlossを可視化できる。
+
+
+```
+python loss_from_log.py <ログファイル名>
 ```
