@@ -140,6 +140,8 @@ layers { bottom: 'fc6' top: 'fc7' name: 'fc7' type: CONVOLUTION
 layers { bottom: 'fc7' top: 'fc7' name: 'relu7' type: RELU }
 layers { bottom: 'fc7' top: 'fc7' name: 'drop7' type: DROPOUT
   dropout_param { dropout_ratio: 0.5 } }
+
+
 layers { name: 'score-fr-ft' type: CONVOLUTION bottom: 'fc7' top: 'score-ft'
   blobs_lr: 1 blobs_lr: 2 weight_decay: 1 weight_decay: 0
   #blobs_lr: 10 blobs_lr: 20 weight_decay: 1 weight_decay: 0
@@ -232,7 +234,7 @@ layers {
   #blobs_lr: 0.01
   #blobs_lr: 0.1 #new parameter
   multi_stage_meanfield_param {
-   num_iterations: 5
+   num_iterations: 10
    compatibility_mode: POTTS
    threshold: 2
    theta_alpha: 160

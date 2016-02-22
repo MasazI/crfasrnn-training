@@ -91,6 +91,7 @@ layers { type: DECONVOLUTION name: 'score2-ft' bottom: 'score-ft' top: 'score2-f
   blobs_lr: 1 blobs_lr: 2 weight_decay: 1 weight_decay: 0
   convolution_param { kernel_size: 4 stride: 2 num_output: 4 } }
 
+
 layers { name: 'score-pool4-ft' type: CONVOLUTION bottom: 'pool4' top: 'score-pool4-ft'
   blobs_lr: 1 blobs_lr: 2 weight_decay: 1 weight_decay: 0
   convolution_param { engine: CAFFE num_output: 4 kernel_size: 1 } }

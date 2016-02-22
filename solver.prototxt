@@ -11,8 +11,8 @@ display: 50
 max_iter: 100000
 momentum: 0.99
 weight_decay: 0.0005 #0.0016
-snapshot: 500
-snapshot_prefix: "models/train"
+snapshot: 5000
+snapshot_prefix: "models/train_it10"
 solver_mode: GPU
 
 #test_initialization: false
