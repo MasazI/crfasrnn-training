@@ -78,15 +78,16 @@ class CRFasRNN:
             print input_image.shape
             print input_image
 
+        min_size = 400.
         original_width = input_image.shape[1]
         original_height = input_image.shape[0]
         ratio = .0
         if original_width > original_height:
             print("change scale with width")
-            ratio = 200./original_width
+            ratio = 400./original_width
         else:
             print("change scale with height")
-            ratio = 200./original_height
+            ratio = 400./original_height
 
         print("width: %f --> %f" % (original_width, original_width * ratio))
         print("height: %f --> %f" % (original_height, original_height * ratio))
@@ -108,12 +109,12 @@ class CRFasRNN:
 
         cur_h, cur_w, cur_c = im.shape
 
-        if cur_h >= 250 or cur_w >= 250:
+        if cur_h >= 500 or cur_w >= 500:
             print("image is too big.")
             return
 
-        pad_h = 250 - cur_h
-        pad_w = 250 - cur_w
+        pad_h = 500 - cur_h
+        pad_w = 500 - cur_w
 
         im = np.pad(im, pad_width=((0, pad_h), (0, pad_w), (0, 0)), mode='constant', constant_values=0)
 

@@ -46,11 +46,15 @@ print cap.isOpened()
 
 #cv2.imshow('predicted Each Pixcel Demo.')
 
+output_cnt = 1
 while(cap.isOpened()):
     ret, frame = cap.read()
 
     height = frame.shape[0]
     width = frame.shape[1]
+
+    print("height %d" % (height))
+    print("width %d" % (width))
 
     if frame is None:
         cnt = cnt + 1
@@ -58,13 +62,16 @@ while(cap.isOpened()):
         print 'stop'
         exit()
 
+    output_cnt_filename = "%04d" % (output_cnt) + ".jpg"
     mat_predicted, ratio = crfasrnn.predict_image(frame, debug=False)
-
-
     mat_predicted_orgsize = cv2.resize(mat_predicted*255, (width, height))
     cv2.imshow("Original Movie.", frame)
-
+    cv2.imwrite(os.path.join(os.path.dirname(__file__), "original_movie_frame", output_cnt_filename), frame)
     cv2.imshow('Predicted Each Pixcel Demo.', mat_predicted_orgsize)
+    cv2.imwrite(os.path.join(os.path.dirname(__file__), "predict_frame", output_cnt_filename), mat_predicted_orgsize)
+
+    output_cnt += 1
+
     cv2.waitKey(20)
 
     cnt = cnt + 5

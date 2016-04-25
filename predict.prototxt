@@ -3,8 +3,8 @@ name: 'TVG_CRF_RNN_COCO_VOC'
 input: 'data'
 input_dim: 1
 input_dim: 3
-input_dim: 250
-input_dim: 250
+input_dim: 500
+input_dim: 500
 force_backward: true
 
 layers { bottom: 'data' top: 'conv1_1' name: 'conv1_1' type: CONVOLUTION
